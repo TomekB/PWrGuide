@@ -19,15 +19,9 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
-import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class ClickableImageView extends ImageView
 {
@@ -43,8 +37,6 @@ public class ClickableImageView extends ImageView
 
 	boolean tapped;
 	private MediaPlayer mediaPlayer;
-	Button buttonPlayStop;
-	private SeekBar seekBar;
 
 	// set maximum scroll amount (based on center of image)
 	int maxX = (int) ((bitmapWidth / 2) - (screenWidth / 2));
@@ -230,6 +222,9 @@ public class ClickableImageView extends ImageView
 	{
 		for (ClickablePoint point : clickablePoints)
 		{
+			Log.d("CURRENT SCROLL: ", downX + " " + downY + " " + posX + " "
+					+ posY + " " + totalX + " " + totalY + " " + scrollByX
+					+ " " + scrollByY);
 			if (posX > point.getPosX() - POINT_RADIUS
 					&& posX < point.getPosX() + POINT_RADIUS
 					&& posY > point.getPosY() - POINT_RADIUS
