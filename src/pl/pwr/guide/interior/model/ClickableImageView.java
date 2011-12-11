@@ -273,7 +273,7 @@ public class ClickableImageView extends ImageView
 					i.putExtra("room", point.getConnectionReference());
 					context.startActivity(i);
 
-//					((Activity) context).finish();
+					((Activity) context).finish();
 
 				} else if (point.getPointType() == Utils.POINT_TYPE_EXIT)
 				{
