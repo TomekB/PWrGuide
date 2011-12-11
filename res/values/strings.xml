@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Tourist Guide</string>
+    <string name="provider_url">http://192.168.1.100/Debet/account/provider</string>
+    <string name="default_zoom_prompt">Zoom</string>
+    <string name="default_view_prompt">View</string>
+    <!-- Menu strings -->
+    <string name="menu_preferences">Preferences</string>
+    <string name="download">Download data</string>
+    <!-- Dialog strings -->
+    <string name="wifi_activate_dialogbox_title">No network available</string>
+    <string name="wifi_activate_dialogbox_question">Open network settings?</string>
+    <string name="positive_answer">Yes</string>
+    <string name="negative_answer">No</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="download_progress">Downloading...</string>
+
+    <!-- Preferences activity -->
+    <string name="map_setup">Map setup</string>
+    <string name="zoom_title">Default zoom</string>
+    <string name="zoom_summary">Choose default map zoom.</string>
+    <string name="map_view_title">Map View</string>
+    <string name="map_view_summary">Toggle between map view and satellite view.</string>
+
+    <!-- Interior -->
+	<string name="close">zamknij</string>
+	<string name="more">więcej...</string>
+	<string name="gallery">galeria</string>
+	<string name="video">video</string>
+	<string name="music">muzyka</string>
+	<string name="play">odtwarzaj</string>
+	<string name="pause">zatrzymaj</string>
+    <string name="go">Go!</string>
+    <string name="url">URL to streaming video</string>
+</resources>

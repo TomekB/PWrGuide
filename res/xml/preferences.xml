@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+	<PreferenceCategory android:title="@string/map_setup">
+		<CheckBoxPreference android:id="@+id/map_view"
+			android:key="map_view" android:title="@string/map_view_title"
+			android:summary="@string/map_view_summary" />
+		<ListPreference android:id="@+id/zoom_spinner"
+			android:key="zoom_spinner" android:title="@string/zoom_title"
+			android:summary="@string/zoom_summary" android:entries="@array/zoom_options"
+			android:entryValues="@array/zoom_options" android:dialogTitle="@string/zoom_title"
+			android:defaultValue="4" />
+	</PreferenceCategory>
+</PreferenceScreen>
+

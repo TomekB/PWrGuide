@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interior id="1">
+	<background></background>
+	<points>
+		<point>
+			<point_id>1</point_id>
+			<point_name>Pomnik Józefa Piłsudskiego</point_name>
+			<x_pos>50</x_pos>
+			<y_pos>50</y_pos>
+			<short_desc>Pomnik marszałka Piłsudskiego, stojący u zbiegu ulic: Piłsudskiego, Wenecja i Garncarskiej w Krakowie, autorstwa Czesława Dźwigaja. Odsłonięty został 10 listopada 2008.</short_desc>
+			<description>Pomnik ustawiony jest na wyłożonym kostką skwerze. Oprócz statuy Piłsudskiego w jego skład wchodzi grupa rzeźbiarska, przedstawiająca Czwórkę Legionową i maszt flagowy. Główny element – pomnik marszałka, składa się z wysokiego, marmurowego cokołu z wyrytym napisem MARSZAŁEK JÓZEF PIŁSUDSKI 1867-1935. Na cokole ustawiona jest figura Piłsudskiego. Ukazany jest on w pozycji stojącej, wsparty na szabli; ubrany w mundur, płaszcz i czapkę. U jego stóp umieszczony jest orzeł, zrywający okowy[6]. Całość ma około 6 m wysokości[6]. Z lewej strony znajduje się rzeźba przedstawiająca Czwórkę Legionową, wyruszających na bojowy szlak z krakowskich Oleandrów[6]. Ustawieni są na pochyłym cokole z inskrypcją-zwrotką pieśni My, Pierwsza Brygada (Legiony to – żołnierska buta, / Legiony to – ofiarny stos, / Legiony to – żołnierska nuta, / Legiony to straceńców los!). Za figurą Piłsudskiego stoi 8,5-metrowy maszt[5], opleciony wieńcem laurowym z różami i z kopią główki laski marszałkowskiej z II Rzeczpospolitej na jego szczycie[6].
+			</description>
+			<link>http://pl.wikipedia.org/wiki/Pomnik_J%C3%B3zefa_Pi%C5%82sudskiego_w_Krakowie</link>
+			<type>0</type>
+			<connection_reference></connection_reference>
+			<multimedia_objects>
+				<multimedia_object>
+					<multimedia_type></multimedia_type>
+					<multimedia_name></multimedia_name>
+					<multimedia_desc></multimedia_desc>
+					<multimedia_path></multimedia_path>
+				</multimedia_object> 
+			</multimedia_objects>
+		</point>
+	</points>
+</interior>

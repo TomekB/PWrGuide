@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <SeekBar
+        android:id="@+id/song_player_seekbar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dip" />
+
+    <Button
+        android:id="@+id/song_player_play_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/play"
+        android:textSize="15pt"
+        android:textStyle="bold" 
+        android:layout_margin="25dip"/>
+
+    <Button
+        android:id="@+id/song_player_close_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/close" />
+
+</LinearLayout>
