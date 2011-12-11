@@ -37,7 +37,20 @@ public class InteriorMainActivity extends Activity
 		switcherView.setScreenWidth(screenWidth);
 		switcherView.setScreenHeight(screenHeight);
 
-		prepareBackground(1, 1);
+		int interior = getIntent().getIntExtra("interior", -1);
+		int room = getIntent().getIntExtra("room", -1);
+
+		Log.d("EXTRAS", interior + " " + room);
+		if (interior == -1)
+		{
+			interior = 1;
+		}
+		if (room == -1)
+		{
+			room = 1;
+		}
+
+		prepareBackground(interior, room);
 	}
 
 	private void prepareBackground(int interiorId, int roomId)
@@ -45,8 +58,9 @@ public class InteriorMainActivity extends Activity
 		if (Environment.MEDIA_MOUNTED.equals(Environment
 				.getExternalStorageState()))
 		{
-			String roomPath = "/PWrGuide/INTERIOR_" + interiorId + "/Interior" + roomId;
-			
+			String roomPath = "/PWrGuide/INTERIOR_" + interiorId + "/Interior"
+					+ roomId;
+
 			Log.d("PATH", roomPath);
 			InteriorPropertiesParser parser = new InteriorPropertiesParser();
 			parser.parse(roomPath, InteriorMainActivity.this, switcherView);

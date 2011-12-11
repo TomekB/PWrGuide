@@ -4,9 +4,11 @@ import java.util.ArrayList;
 
 import pl.pwr.guide.R;
 import pl.pwr.guide.interior.InteriorGallery;
+import pl.pwr.guide.interior.InteriorMainActivity;
 import pl.pwr.guide.interior.VideoPlayer;
 import pl.pwr.guide.interior.controller.Utils;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -97,9 +99,6 @@ public class ClickableImageView extends ImageView
 	protected void onDraw(Canvas canvas)
 	{
 		super.onDraw(canvas);
-		// int posX = getScrollX() + bitmapWidth / 2 - screenWidth / 2;
-		// int posY = getScrollY() + bitmapHeight / 2 - screenHeight / 2;
-		// Log.d("ACTUALC SCROLL: ", posX + " " + posY);
 
 		for (ClickablePoint point : clickablePoints)
 		{
@@ -222,9 +221,9 @@ public class ClickableImageView extends ImageView
 	{
 		for (ClickablePoint point : clickablePoints)
 		{
-			Log.d("CURRENT SCROLL: ", downX + " " + downY + " " + posX + " "
-					+ posY + " " + totalX + " " + totalY + " " + scrollByX
-					+ " " + scrollByY);
+			posX += maxX + totalX;
+			posY += maxY + totalY;
+
 			if (posX > point.getPosX() - POINT_RADIUS
 					&& posX < point.getPosX() + POINT_RADIUS
 					&& posY > point.getPosY() - POINT_RADIUS
@@ -269,9 +268,16 @@ public class ClickableImageView extends ImageView
 				} else if (point.getPointType() == Utils.POINT_TYPE_TRANSITION)
 				{
 					// przejdz do innego pokoju
+					Intent i = new Intent(context, InteriorMainActivity.class);
+					i.putExtra("interior", 1);
+					i.putExtra("room", point.getConnectionReference());
+					context.startActivity(i);
+
+//					((Activity) context).finish();
+
 				} else if (point.getPointType() == Utils.POINT_TYPE_EXIT)
 				{
-					// zamknij ca¸y modu¸
+					((Activity) context).finish();
 				}
 			}
 		}
