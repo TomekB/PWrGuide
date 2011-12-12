@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">Tourist Guide</string>
-    <string name="provider_url">http://192.168.1.104/Debet/account/provider</string>
+    <string name="provider_url">http://g2.gispartner.pl/imap_catalog/resources/info/temp/provider.xml</string>
     <string name="default_zoom_prompt">Zoom</string>
     <string name="default_view_prompt">View</string>
     <!-- Menu strings -->
