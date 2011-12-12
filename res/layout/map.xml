@@ -8,8 +8,9 @@
         android:id="@+id/myMapView"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:apiKey="0v6_Rw6E7HiamDz4PWcNyhUS23InjSmlVwE9Qrw"
+        android:apiKey="0KI-fPwPxDQNSktv_3IqkpotIDZoPlZ2IhZSm-A"
         android:clickable="true"
         android:enabled="true" />
-
+<!--  0v6_Rw6E7HiamDz4PWcNyhUS23InjSmlVwE9Qrw -> krawca key -->
+<!--  0KI-fPwPxDQNSktv_3IqkpotIDZoPlZ2IhZSm-A -> baraniny key -->
 </LinearLayout>
