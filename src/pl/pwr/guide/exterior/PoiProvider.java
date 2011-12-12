@@ -14,7 +14,7 @@ import android.text.TextUtils;
 
 public class PoiProvider extends ContentProvider{
 
-	public static String AUTHORITY = "com.pwr.guide.providers.provider.guide";
+	public static String AUTHORITY = "pl.pwr.guide.exterior.provider.guide";
 	
 	public static final Uri CONTENT_URI = Uri
 			.parse("content://"+AUTHORITY+"/poi");
