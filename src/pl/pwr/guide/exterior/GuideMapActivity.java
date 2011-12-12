@@ -357,6 +357,19 @@ public class GuideMapActivity extends MapActivity {
 
 	private void getData() {
 		
+		Thread updateThread = new Thread(null, backgroundDownload ,"updateData");
+		updateThread.start();
+	}
+		
+	private Runnable backgroundDownload = new Runnable() {
+		@Override
+		public void run() {
+			getAndParseData();
+		}
+	};
+		
+	private void getAndParseData() {
+			
 		URL url;
 		try {
 			String feed = getString(R.string.provider_url);
