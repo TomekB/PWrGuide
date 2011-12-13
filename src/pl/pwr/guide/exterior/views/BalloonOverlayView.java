@@ -1,4 +1,4 @@
-package pl.pwr.guide.exterior;
+package pl.pwr.guide.exterior.views;
 
 import pl.pwr.guide.R;
 import android.content.Context;

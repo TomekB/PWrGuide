@@ -1,4 +1,4 @@
-package pl.pwr.guide.exterior;
+package pl.pwr.guide.exterior.utils;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,5 +1,6 @@
-package pl.pwr.guide.exterior;
+package pl.pwr.guide.exterior.providers;
 
+import pl.pwr.guide.exterior.helpers.PoiDatabaseHelper;
 import android.content.ContentProvider;
 import android.content.ContentUris;
 import android.content.ContentValues;

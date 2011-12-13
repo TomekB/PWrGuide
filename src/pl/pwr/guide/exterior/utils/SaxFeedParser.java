@@ -1,7 +1,9 @@
-package pl.pwr.guide.exterior;
+package pl.pwr.guide.exterior.utils;
 
 import java.util.List;
 import org.xml.sax.helpers.DefaultHandler;
+
+import pl.pwr.guide.exterior.model.Poi;
 import android.util.Xml;
 
 public class SaxFeedParser extends BaseFeedParser
@@ -18,27 +20,19 @@ public class SaxFeedParser extends BaseFeedParser
 
 	public int parse()
 	{
-		handler = new ProviderXmlHandler();
+		handler = new PoiXmlHandler();
 		try
 		{
 			Xml.parse(this.getInputStream(), Xml.Encoding.UTF_8, handler);
 		} catch (Exception e)
 		{
-			throw new RuntimeException(e);
+			e.printStackTrace();
 		}
-		int xmlVersion = ((ProviderXmlHandler) handler).getVersion();
-		if (version != xmlVersion)
+		int xmlVersion = ((PoiXmlHandler) handler).getVersion();
+		if (version == xmlVersion)
 		{
-
-			handler = new PoiXmlHandler();
-			try
-			{
-				Xml.parse(this.getInputStream(), Xml.Encoding.UTF_8, handler);
-			} catch (Exception e)
-			{
-				throw new RuntimeException(e);
-			}
-			this.poiList = ((PoiXmlHandler) handler).getPois();
+			
+			this.poiList = ((PoiXmlHandler) handler).getPois();			
 		}
 		return xmlVersion;
 	}

@@ -1,7 +1,6 @@
-package pl.pwr.guide.exterior;
+package pl.pwr.guide.exterior.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 /***
@@ -22,8 +21,6 @@ public class Poi implements Serializable{
 	private String link;
 	private Category category;
 	private List<Image> images;
-	private ArrayList<Video> videos;
-	private ArrayList<Interior> interiors;
 	
 	public long getId() {
 		return id;
@@ -79,18 +76,6 @@ public class Poi implements Serializable{
 	public void setImages(List<Image> images) {
 		this.images = images;
 	}
-	public ArrayList<Video> getVideos() {
-		return videos;
-	}
-	public void setVideos(ArrayList<Video> videos) {
-		this.videos = videos;
-	}
-	public ArrayList<Interior> getInteriors() {
-		return interiors;
-	}
-	public void setInteriors(ArrayList<Interior> interiors) {
-		this.interiors = interiors;
-	}
 		
 	@Override
 	public String toString() {
@@ -98,7 +83,7 @@ public class Poi implements Serializable{
 				+ ", longitude=" + longitude + ", shortDescription="
 				+ shortDescription + ", description=" + description + ", link="
 				+ link + ", category=" + category + ", images=" + images
-				+ ", videos=" + videos + ", interiors=" + interiors + "]";
+				+  "]";
 	}
 	@Override
 	public boolean equals(Object obj) {

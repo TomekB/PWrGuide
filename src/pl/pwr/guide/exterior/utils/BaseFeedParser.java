@@ -1,9 +1,10 @@
-package pl.pwr.guide.exterior;
+package pl.pwr.guide.exterior.utils;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+
 
 public abstract class BaseFeedParser implements IFeedParser {
     

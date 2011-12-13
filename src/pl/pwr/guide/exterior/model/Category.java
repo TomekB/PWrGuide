@@ -1,4 +1,4 @@
-package pl.pwr.guide.exterior;
+package pl.pwr.guide.exterior.model;
 
 public enum Category {
 	

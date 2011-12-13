@@ -1,4 +1,4 @@
-package pl.pwr.guide.exterior;
+package pl.pwr.guide.exterior.activities;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -10,7 +10,12 @@ import java.util.List;
 import java.util.Locale;
 
 import pl.pwr.guide.R;
-
+import pl.pwr.guide.exterior.model.Image;
+import pl.pwr.guide.exterior.model.Poi;
+import pl.pwr.guide.exterior.model.overlays.MyPositionOverlay;
+import pl.pwr.guide.exterior.model.overlays.PoiOverlay;
+import pl.pwr.guide.exterior.providers.PoiProvider;
+import pl.pwr.guide.exterior.utils.SaxFeedParser;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -345,8 +350,6 @@ public class GuideMapActivity extends MapActivity {
 				//Category category = c.getInt(PoiProvider.CATEGORY_COLUMN);
 				// TODO fill that fields
 				ArrayList<Image> images;
-				ArrayList<Video> videos;
-				ArrayList<Interior> interiors;
 				
 				poisList.add(poi);
 				
@@ -379,6 +382,9 @@ public class GuideMapActivity extends MapActivity {
 			connection = url.openConnection();
 
 			HttpURLConnection httpConnection = (HttpURLConnection) connection;
+			httpConnection.setRequestMethod("GET");
+			httpConnection.setDoOutput(true);
+
 			int responseCode = httpConnection.getResponseCode();
 
 			if (responseCode == HttpURLConnection.HTTP_OK) {
@@ -386,7 +392,7 @@ public class GuideMapActivity extends MapActivity {
 				int xmlVersion = prefs.getInt(Preferences.XML_VERSION, 1);
 				SaxFeedParser parser = new SaxFeedParser(feed, xmlVersion);
 				int  serverXmlVersion = parser.parse();
-				if (xmlVersion != serverXmlVersion) {
+				if (xmlVersion == serverXmlVersion) {
 					
 					Editor editor = prefs.edit();
 					editor.putInt(Preferences.XML_VERSION, serverXmlVersion);
@@ -425,14 +431,10 @@ public class GuideMapActivity extends MapActivity {
 				values.put(PoiProvider.KEY_LAT, poi.getLatitude());
 				values.put(PoiProvider.KEY_LON, poi.getLongitude());
 				values.put(PoiProvider.KEY_SHORT, poi.getShortDescription());
-				values.put(PoiProvider.KEY_DESC, poi.getDescription());
-				values.put(PoiProvider.KEY_LINK, poi.getLink());
-				// values.put(PoiProvider.KEY_CATEGORY, poi.getCategory());
-				// //TODO Category ENUM
+				//values.put(PoiProvider.KEY_DESC, poi.getDescription());
+				//values.put(PoiProvider.KEY_LINK, poi.getLink());
 
 				cr.insert(PoiProvider.CONTENT_URI, values);
-
-				return true;
 			}
 		}
 		return false;

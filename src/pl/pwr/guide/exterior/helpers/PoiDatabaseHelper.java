@@ -1,4 +1,4 @@
-package pl.pwr.guide.exterior;
+package pl.pwr.guide.exterior.helpers;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

@@ -1,6 +1,9 @@
-package pl.pwr.guide.exterior;
+package pl.pwr.guide.exterior.model.overlays;
 
 import java.util.ArrayList;
+
+import pl.pwr.guide.exterior.model.Poi;
+import pl.pwr.guide.exterior.views.BalloonItemizedOverlay;
 
 import android.graphics.drawable.Drawable;
 

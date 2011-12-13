@@ -1,4 +1,4 @@
-package pl.pwr.guide.exterior;
+package pl.pwr.guide.exterior.utils;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,6 +14,10 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+import pl.pwr.guide.exterior.model.Image;
+import pl.pwr.guide.exterior.model.Poi;
+import pl.pwr.guide.exterior.model.Trip;
+
 /***
  * Handles city xml.
  * 
@@ -24,8 +28,9 @@ public class PoiXmlHandler extends DefaultHandler {
 
 	// name of parent node
 	private String parentNode;
+	static final String CITY = "city";
+	static final String VERSION = "version";
 	static final String POI = "poi";
-	static final String INTERIOR = "interior";
 	static final String TRIP = "trip";
 
 	// names of the XML tags - POI
@@ -45,21 +50,23 @@ public class PoiXmlHandler extends DefaultHandler {
 
 	private List<Poi> pois;
 	private List<Image> images;
-	private List<Interior> interiors;
 	private List<Trip> trips;
 	private Poi poi;
 	private Image image;
-	private Interior interior;
 	private Trip trip;
 	private StringBuilder builder;
+	
+	private int version;
+	
+	public int getVersion()
+	{
+		return version;
+	}
 
 	public List<Poi> getPois() {
 		return pois;
 	}
 
-	public List<Interior> getInteriors() {
-		return interiors;
-	}
 
 	public List<Trip> getTrips() {
 		return trips;
@@ -123,8 +130,6 @@ public class PoiXmlHandler extends DefaultHandler {
 			}
 
 			builder.setLength(0);
-		} else if (this.interior != null && parentNode.equals(INTERIOR)) {
-			// TODO handle interiors nodes
 		} else if (this.trip != null && parentNode.equals(TRIP)) {
 			// TODO TOMAS handle trip nodes
 		}
@@ -137,7 +142,6 @@ public class PoiXmlHandler extends DefaultHandler {
 	public void startDocument() throws SAXException {
 		super.startDocument();
 		pois = new ArrayList<Poi>();
-		interiors = new ArrayList<Interior>();
 		trips = new ArrayList<Trip>();
 		builder = new StringBuilder();
 	}
@@ -146,7 +150,10 @@ public class PoiXmlHandler extends DefaultHandler {
 	public void startElement(String uri, String localName, String name,
 			Attributes attributes) throws SAXException {
 		super.startElement(uri, localName, name, attributes);
-		if (localName.equalsIgnoreCase(POI)) {
+		if (localName.equalsIgnoreCase(CITY))
+		{
+			this.version = Integer.parseInt(attributes.getValue(1));
+		} else if (localName.equalsIgnoreCase(POI)) {
 
 			poi = new Poi();
 			parentNode = POI;
@@ -158,10 +165,6 @@ public class PoiXmlHandler extends DefaultHandler {
 		} else if (localName.equalsIgnoreCase(IMAGE)) {
 
 			image = new Image();
-		} else if (localName.equalsIgnoreCase(INTERIOR)) {
-
-			interior = new Interior();
-			parentNode = INTERIOR;
 		} else if (localName.equalsIgnoreCase(TRIP)) {
 
 			trip = new Trip();
