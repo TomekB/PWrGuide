@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import pl.pwr.guide.exterior.model.Poi;
 import pl.pwr.guide.exterior.views.BalloonItemizedOverlay;
-
 import android.graphics.drawable.Drawable;
 
 import com.google.android.maps.GeoPoint;
@@ -14,23 +13,20 @@ import com.google.android.maps.OverlayItem;
 public class PoiOverlay extends BalloonItemizedOverlay<OverlayItem> {
 
 	private ArrayList<OverlayItem> m_overlays = new ArrayList<OverlayItem>();
-	private MapView mapView;
+	private ArrayList<GeoPoint> geoPoints = new ArrayList<GeoPoint>();
 
 	public PoiOverlay(Drawable defaultMarker, MapView mapView) {
 		super(boundCenter(defaultMarker), mapView);
-
-		this.mapView = mapView;
 
 		populate();
 	}
 
 	public void addOverlay(Poi poi) {
 
-		GeoPoint point = new GeoPoint((int) (poi.getLatitude() * 1E6),
-				(int) (poi.getLongitude() * 1E6));
-		OverlayItem overlayItem = new OverlayItem(point, poi.getName(),
-				poi.getShortDescription());
+		GeoPoint geoPoint = new GeoPoint((int) (poi.getLatitude() * 1E6), (int) (poi.getLongitude() * 1E6));
+		OverlayItem overlayItem = new OverlayItem(geoPoint, poi.getName(), poi.getShortDescription());
 		m_overlays.add(overlayItem);
+		geoPoints.add(geoPoint);
 		populate();
 	}
 
@@ -42,6 +38,10 @@ public class PoiOverlay extends BalloonItemizedOverlay<OverlayItem> {
 	@Override
 	public int size() {
 		return m_overlays.size();
+	}
+
+	public ArrayList<GeoPoint> getGeoPoints() {
+		return geoPoints;
 	}
 
 	@Override

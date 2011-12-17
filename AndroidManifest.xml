@@ -18,6 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".exterior.activities.TripListActivity" />
         <activity android:name=".interior.InteriorGallery" />
         <activity android:name=".interior.VideoPlayer" android:screenOrientation="landscape"/>
         <activity android:name=".interior.InteriorMainActivity" />
@@ -27,6 +28,9 @@
         <provider
             android:authorities="pl.pwr.guide.exterior.provider.guide"
             android:name=".exterior.providers.PoiProvider" />
+        <provider
+            android:authorities="pl.pwr.guide.exterior.provider.guide.trips"
+            android:name=".exterior.providers.TripProvider" />
 
         <uses-library android:name="com.google.android.maps" />
     </application>

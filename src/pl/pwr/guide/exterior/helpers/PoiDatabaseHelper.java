@@ -9,7 +9,8 @@ import android.util.Log;
 public class PoiDatabaseHelper extends SQLiteOpenHelper{
 
 	private static final String TAG = "PoiProvider";
-	private static final String TABLE = "poi";
+	private static final String POI_TABLE = "poi";
+	private static final String TRIPS_TABLE = "trips";	
 
 	// Column Names
 	public static final String KEY_ID = "_id";
@@ -20,11 +21,17 @@ public class PoiDatabaseHelper extends SQLiteOpenHelper{
 	public static final String KEY_DESC = "description";
 	public static final String KEY_LINK = "link";
 	public static final String KEY_CATEGORY = "category";
+	
+	public static final String KEY_POIS = "pois";
 
-	private static final String DATABASE_CREATE = "create table " + TABLE
+	private static final String POI_DATABASE_CREATE = "create table " + POI_TABLE
 			+ " (" + KEY_ID + " integer primary key autoincrement, " + KEY_NAME + " TEXT, " + KEY_LAT
 			+ " LONG, " + KEY_LON + " LONG, " + KEY_SHORT + " TEXT, " + KEY_DESC + " TEXT, "
 			+ KEY_LINK + " TEXT, " + KEY_CATEGORY + " INTEGER);";
+	
+	private static final String TRIPS_DATABASE_CREATE = "create table " + TRIPS_TABLE
+	+ " (" + KEY_ID + " integer primary key autoincrement, " + KEY_NAME + " TEXT, " + KEY_POIS
+	+ " TEXT);";
 
 	public PoiDatabaseHelper(Context context, String name,
 			CursorFactory factory, int version) {
@@ -33,7 +40,8 @@ public class PoiDatabaseHelper extends SQLiteOpenHelper{
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		db.execSQL(DATABASE_CREATE);
+		db.execSQL(POI_DATABASE_CREATE);
+		db.execSQL(TRIPS_DATABASE_CREATE);
 	}
 
 	@Override
@@ -41,7 +49,8 @@ public class PoiDatabaseHelper extends SQLiteOpenHelper{
 		Log.w(TAG, "Upgrading database from version " + oldVersion + " to "
 				+ newVersion + ", which will destroy all old data");
 
-		db.execSQL("DROP TABLE IF EXISTS " + TABLE);
+		db.execSQL("DROP TABLE IF EXISTS " + POI_TABLE);
+		db.execSQL("DROP TABLE IF EXISTS " + TRIPS_TABLE);
 		onCreate(db);
 	}
 

@@ -12,6 +12,7 @@ import java.util.Locale;
 import pl.pwr.guide.R;
 import pl.pwr.guide.exterior.model.Image;
 import pl.pwr.guide.exterior.model.Poi;
+import pl.pwr.guide.exterior.model.overlays.DirectionPathOverlay;
 import pl.pwr.guide.exterior.model.overlays.MyPositionOverlay;
 import pl.pwr.guide.exterior.model.overlays.PoiOverlay;
 import pl.pwr.guide.exterior.providers.PoiProvider;
@@ -56,6 +57,7 @@ public class GuideMapActivity extends MapActivity {
 	// Define the new menu item identifiers
 	static final private int MENU_DOWNLOAD_DATA = Menu.FIRST;
 	static final private int MENU_PREFERENCES = Menu.FIRST + 1;
+	static final private int MENU_TRIPS = Menu.FIRST + 2;
 	static final private int SHOW_PREFERENCES = 1;
 	
 	private boolean isMapView = false;
@@ -111,7 +113,7 @@ public class GuideMapActivity extends MapActivity {
 		overlays.add(positionOverlay);
 		// Add the PoiOverlay
 		drawPoiOverlays();
-
+		
 		//Refreshes current location
 		locationManager.requestLocationUpdates(provider, 2000, 10,
 				locationListener);	
@@ -224,15 +226,19 @@ public class GuideMapActivity extends MapActivity {
 	
 	private void drawPoiOverlays(){
 		
-		PoiOverlay itemizedOverlay = new PoiOverlay(getResources().getDrawable(R.drawable.marker), myMapView);
-		
+		PoiOverlay itemizedOverlay = new PoiOverlay(getResources().getDrawable(R.drawable.marker), myMapView);		
 		loadPoisFromProvider();
+		
 		for(Poi poi : poisList){
 			
-			Log.d("POI",poi.toString());
+			Log.d("POI", poi.toString());
 			itemizedOverlay.addOverlay(poi);
 		}
 		overlays.add(itemizedOverlay);
+		
+		List<GeoPoint> geoPoints =  itemizedOverlay.getGeoPoints();
+		
+		overlays.add(new DirectionPathOverlay(geoPoints.get(0),geoPoints.get(6)));
 	}
 
 	@Override
@@ -248,10 +254,13 @@ public class GuideMapActivity extends MapActivity {
 		MenuItem itemDownloadData = menu.add(0, MENU_DOWNLOAD_DATA, Menu.NONE ,R.string.download);
 		MenuItem itemPrefs = menu.add(0, MENU_PREFERENCES, Menu.NONE,
 				R.string.menu_preferences);
+		MenuItem itemTrip= menu.add(0, MENU_TRIPS, Menu.NONE,
+				R.string.menu_trips);
 
 		// Assign icons
 		itemDownloadData.setIcon(R.drawable.ic_menu_refresh);
 		itemPrefs.setIcon(R.drawable.ic_menu_preferences);
+		itemTrip.setIcon(R.drawable.ic_menu_preferences);
 		return true;
 	}
 
@@ -275,6 +284,11 @@ public class GuideMapActivity extends MapActivity {
 		case (MENU_PREFERENCES): {
 			Intent i = new Intent(this, Preferences.class);
 			startActivityForResult(i, SHOW_PREFERENCES);
+			return true;
+		}
+		case (MENU_TRIPS): {
+			Intent intent = new Intent(this, TripListActivity.class);
+			startActivity(intent);
 			return true;
 		}
 		}

@@ -3,8 +3,6 @@ package pl.pwr.guide.exterior.model.overlays;
 import java.util.ArrayList;
 
 import pl.pwr.guide.exterior.views.BalloonItemizedOverlay;
-
-
 import android.graphics.drawable.Drawable;
 import android.location.Location;
 
@@ -18,7 +16,6 @@ public class MyPositionOverlay extends BalloonItemizedOverlay<OverlayItem> {
 	
 	private Location location;
 	private String locationInfo;
-	private MapView mapView;
 
 	/** Get the position location */
 	public Location getLocation() {
@@ -40,8 +37,6 @@ public class MyPositionOverlay extends BalloonItemizedOverlay<OverlayItem> {
 	
 	public MyPositionOverlay(Drawable defaultMarker, MapView mapView) {
 		super(boundCenter(defaultMarker), mapView);
-		
-		this.mapView = mapView;
 		
 		populate();
 	}

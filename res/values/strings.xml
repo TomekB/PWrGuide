@@ -2,11 +2,12 @@
 <resources>
 
     <string name="app_name">Tourist Guide</string>
-    <string name="provider_url">http://192.168.1.104/Debet/account/xml</string>
+    <string name="provider_url">http://g2.gispartner.pl/imap_catalog/resources/info/temp/xml.xml</string>
     <string name="default_zoom_prompt">Zoom</string>
     <string name="default_view_prompt">View</string>
     <!-- Menu strings -->
     <string name="menu_preferences">Preferences</string>
+    <string name="menu_trips">Trips</string>
     <string name="download">Download data</string>
     <!-- Dialog strings -->
     <string name="wifi_activate_dialogbox_title">No network available</string>
